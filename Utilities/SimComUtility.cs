@@ -23,8 +23,15 @@ public class SimComUtility
 
     public bool sendSms(string phoneNumber, string msg)
     {
-        _port.Close();
-        _port.Open();
+        try
+        {
+            _port.Close();
+            _port.Open();
+        }
+        catch (System.Exception exception)
+        {
+            throw exception;
+        }
 
         _port.Write("AT" + _enter);
         Thread.Sleep(100);
